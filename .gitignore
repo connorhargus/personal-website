@@ -5,5 +5,5 @@
 
 media/
 .idea/
-static/
+/static/
 venv/
