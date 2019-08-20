@@ -26,7 +26,7 @@ with open(os.path.join(BASE_DIR, 'secret.json')) as config_file:
 SECRET_KEY = config['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = (config["PRODUCTION"] == "True")
+DEBUG = (config["PRODUCTION"] != "True")
 
 if DEBUG:
     ALLOWED_HOSTS = []
