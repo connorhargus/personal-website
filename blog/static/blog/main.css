@@ -35,6 +35,10 @@ p a {
   text-decoration: underline;
 }
 
+footer a {
+  color: #4D545B;
+}
+
 h1,
 h2,
 h3,
@@ -46,7 +50,7 @@ h6 {
 }
 
 a {
-  color: #212529;
+  color: #235d93;
   -webkit-transition: all 0.2s;
   transition: all 0.2s;
 }
@@ -55,11 +59,6 @@ a:focus, a:hover {
   color: #868e96;
   text-decoration: none;
 }
-
-/*ul, ol {*/
-  /*margin-top: 0;*/
-  /*margin-bottom: 0;*/
-/*}*/
 
 blockquote {
   font-style: italic;
