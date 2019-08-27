@@ -44,17 +44,10 @@ class PostDetailView(DetailView):
     model = Post
 
 
-class LogoutIfNotStaffMixin(AccessMixin):
-    def dispatch(self, request, *args, **kwargs):
-        if not request.user.is_staff:
-            logout(request)
-            return self.handle_no_permission()
-        return super(LogoutIfNotStaffMixin, self).dispatch(request, *args, **kwargs)
-
-
 # Inheriting from LoginRequiredMixin is similar to decorator @login_required but for class-based views.
-class PostCreateView(PermissionRequiredMixin, LogoutIfNotStaffMixin, CreateView):
+class PostCreateView(PermissionRequiredMixin, CreateView):
 
+    # Restrict access for creating posts to staff
     permission_required = 'is_staff'
 
     model = Post
