@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin, AccessMixin, PermissionRequiredMixin
 from django.contrib.auth.models import User
+from django.contrib.auth import logout
+
 from django.views.generic import (
     ListView,
     DetailView,
@@ -38,13 +40,23 @@ class UserPostListView(ListView):
         return Post.objects.filter(author=user).order_by('-date_posted')
 
 
-
 class PostDetailView(DetailView):
     model = Post
 
 
+class LogoutIfNotStaffMixin(AccessMixin):
+    def dispatch(self, request, *args, **kwargs):
+        if not request.user.is_staff:
+            logout(request)
+            return self.handle_no_permission()
+        return super(LogoutIfNotStaffMixin, self).dispatch(request, *args, **kwargs)
+
+
 # Inheriting from LoginRequiredMixin is similar to decorator @login_required but for class-based views.
-class PostCreateView(LoginRequiredMixin, CreateView):
+class PostCreateView(PermissionRequiredMixin, LogoutIfNotStaffMixin, CreateView):
+
+    permission_required = 'is_staff'
+
     model = Post
     fields = ['title', 'content']
 

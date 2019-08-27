@@ -41,9 +41,11 @@
             <a class="nav-link" href="{% url 'blog-calculus' %}">Calculus</a>
           </li>
           {% if user.is_authenticated %}
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'post-create' %}">Create Post</a>
-            </li>
+            {%  if user.is_staff %}
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'post-create' %}">Create Post</a>
+              </li>
+            {% endif %}
             <li class="nav-item">
               <a class="nav-link" href="{% url 'profile' %}">Profile</a>
             </li>
