@@ -6,7 +6,7 @@
 
 body {
   background-color: #BDBFBA;
-  background-image: url("/media/bg.png");
+  /*background-image: url("/media/bg.png");*/
   background-size: 2500px;
   background-attachment: fixed;
   background-position: 50% 80%;
