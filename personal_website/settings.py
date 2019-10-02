@@ -31,7 +31,7 @@ DEBUG = (config["PRODUCTION"] != "True")
 if DEBUG:
     ALLOWED_HOSTS = ['127.0.0.1', '45.79.20.42']
 else:
-    ALLOWED_HOSTS = ['www.connorharg.us', 'www.connorhargus.com', '45.79.20.42']
+    ALLOWED_HOSTS = ['connorharg.us', 'connorhargus.com', 'www.connorharg.us', 'www.connorhargus.com', '45.79.20.42']
 
 # Application definition, also allowing for crispy forms add on package
 

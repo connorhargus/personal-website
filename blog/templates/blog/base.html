@@ -62,9 +62,9 @@
               <a class="nav-link" href="{% url 'logout' %}">Logout</a>
             </li>
           {% else %}
-            <li class="nav-item">
-              <a class="nav-link" href="{% url 'register' %}">Register</a>
-            </li>
+{#            <li class="nav-item">#}
+{#              <a class="nav-link" href="{% url 'register' %}">Register</a>#}
+{#            </li>#}
             <li class="nav-item">
               <a class="nav-link" href="{% url 'login' %}">Login</a>
             </li>
@@ -120,7 +120,7 @@
 
   <main role="main" class="container">
     <div class="row">
-      <div class="col-md-9">
+      <div class="col-md-8">
         {% if messages %}
           {% for message in messages %}
             <div class="alert alert-{{ message.tags }}">
@@ -130,12 +130,13 @@
         {% endif %}
         {% block content %}{% endblock %}
       </div>
-      <div class="col-md-3">
+      <div class="col"></div>
+      <div class="col-md-4">
         <div class="content-section about">
           {%  block sidebar %}{% endblock %}
           <img class="rounded-circle about-img" src="/media/about_picture.jpg">  {#  {{ user.profile.image.url }}">#}
           <h5>About</h5>
-          I'm Connor. I hope you like my blog. If you have any questions, feel free to reach out at <a href="mailto:connor@hargus.me">connor@hargus.me</a>.
+          I'm Connor. This is my blog, where I post about stuff I find interesting. If you have any thoughts, questions, or recommendations, feel free to reach out to me at <a href="mailto:connor@hargus.me">connor@hargus.me</a>.
         </div>
       </div>
     </div>
