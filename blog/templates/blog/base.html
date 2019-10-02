@@ -20,7 +20,16 @@
   <!-- Font Awesome for footer icons -->
   <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
 
+{#  Failed attempt to add favicon: #}
+{#  <link rel="icon" href="{% static 'blog/favicon.ico' %}" type="image/x-icon">#}
+
   <link rel="stylesheet" type="text/css" href="{% static 'blog/main.css' %}">
+
+  {% if title %}
+    <title>connor hargus - {{ title }}</title>
+  {% else %}
+    <title>connor hargus</title>
+  {% endif %}
 
 </head>
 <body>
@@ -111,7 +120,7 @@
 
   <main role="main" class="container">
     <div class="row">
-      <div class="col-md-8">
+      <div class="col-md-9">
         {% if messages %}
           {% for message in messages %}
             <div class="alert alert-{{ message.tags }}">
@@ -121,12 +130,12 @@
         {% endif %}
         {% block content %}{% endblock %}
       </div>
-      <div class="col-md-4">
+      <div class="col-md-3">
         <div class="content-section about">
           {%  block sidebar %}{% endblock %}
+          <img class="rounded-circle about-img" src="/media/about_picture.jpg">  {#  {{ user.profile.image.url }}">#}
           <h5>About</h5>
           I'm Connor. I hope you like my blog. If you have any questions, feel free to reach out at <a href="mailto:connor@hargus.me">connor@hargus.me</a>.
-          </ul>
         </div>
       </div>
     </div>

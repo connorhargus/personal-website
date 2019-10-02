@@ -6,16 +6,13 @@
 
 body {
   background-color: #BDBFBA;
-  /*background-image: url("/media/bg.png");*/
+  background-image: url("/media/bg.png");
   background-size: 2500px;
   background-attachment: fixed;
   background-position: 50% 80%;
   font-size: 19px;
   color: #4D545B;
   font-family: Crimson Text, serif;
-  /*font-weight: bold;*/
-  /*padding-top: 75px;*/
-  /*font-family: 'Lora', 'Times New Roman', serif;*/
 }
 
 p {
@@ -479,4 +476,14 @@ footer .copyright {
   width: 250px;
   margin-right: 20px;
   margin-bottom: 16px;
+}
+
+.about-img {
+  height: 150px;
+  width: 150px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  margin-bottom:10px
 }

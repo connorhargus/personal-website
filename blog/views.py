@@ -13,11 +13,11 @@ from django.views.generic import (
 from .models import Post
 
 # This is no longer used, since adding class-based version below
-def home(request):
-    context = {
-        'posts': Post.objects.all()
-    }
-    return render(request, 'blog/home.html', context)
+# def home(request):
+#     context = {
+#         'posts': Post.objects.all(),
+#     }
+#     return render(request, 'blog/home.html', context)
 
 
 # Class based views below use defaults for views, saving lines of code if naming conventions followed.
@@ -27,6 +27,7 @@ class PostListView(ListView):
     context_object_name = 'posts'  # Default name is different
     ordering = ['-date_posted']
     paginate_by = 5
+    extra_context = {'title': 'blog'}
 
 
 class UserPostListView(ListView):
@@ -34,6 +35,7 @@ class UserPostListView(ListView):
     template_name = 'blog/user_posts.html'  # Default location of template for this view <app>/<model>_<viewtype>.html
     context_object_name = 'posts'  # Default name is different
     paginate_by = 5
+    extra_context = {'title': 'user posts'}
 
     def get_queryset(self):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
@@ -90,9 +92,9 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 
 def about(request):
-    return render(request, 'blog/about.html', {'title': 'About'})
+    return render(request, 'blog/about.html', {'title': 'about'})
 
 
 def calculus(request):
-    return render(request, 'blog/calculus.html', {'title': 'Calculus'})
+    return render(request, 'blog/calculus.html', {'title': 'calculus'})
 

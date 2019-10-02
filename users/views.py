@@ -18,7 +18,7 @@ def register(request):
             return redirect('login')
     else:
         form = UserRegistrationForm()
-    return render(request, 'users/register.html', {'form': form})
+    return render(request, 'users/register.html', {'title': 'register', 'form': form})
 
 
 # View of profile, decorator makes it so user must be logged in to view this page.
@@ -42,7 +42,8 @@ def profile(request):
         u_form = UserUpdateForm(instance=request.user)
         p_form = ProfileUpdateForm(instance=request.user.profile)
 
-    context = {'u_form': u_form,
+    context = {'title': 'profile',
+               'u_form': u_form,
                'p_form': p_form}
 
     return render(request, 'users/profile.html', context)
