@@ -1,0 +1,20 @@
+<article class="media content-section">
+{#  <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">#}
+  <div class="media-body">
+    <div class="article-metadata">
+{#      <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>#}
+      <small class="text-muted">{{ post.date_posted|date:"g a, F j, Y" }}</small>
+      <h3><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h3>
+
+      {# I think this works and only shows up for PostDetailView is because object in the PostListView #}
+      {# does not have attribute author (because it is a list of posts) #}
+      {% if object.author == user %}
+        <div>
+          <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' object.id %}">Update</a>
+          <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post-delete' object.id %}">Delete</a>
+        </div>
+      {% endif %}
+    </div>
+    <p class="article-content">{{ post.content | safe }}</p>
+  </div>
+</article>

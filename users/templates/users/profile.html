@@ -3,11 +3,13 @@
 {% block content %}
 {#    Note: user is not explicitly passed in, but is built into Django. #}
     <div class="content-section profile">
-      <div class="media">
-        <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
-        <div class="media-body">
-          <h2 class="account-heading">{{ user.username }}</h2>
-          <p class="text-secondary">{{ user.email }}</p>
+      <div class="row">
+        <div class="col">
+          <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
+        </div>
+        <div class="col align-self-center">
+          <p>Username:<br> {{ user.username }}</p>
+          <p class="text-secondary">Email:<br> {{ user.email }}</p>
         </div>
       </div>
 {#    The enctype in form allows form to pass image data properly. #}

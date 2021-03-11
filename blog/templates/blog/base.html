@@ -18,10 +18,10 @@
   <link href="https://fonts.googleapis.com/css?family=Alegreya&display=swap" rel="stylesheet">
 
   <!-- Font Awesome for footer icons -->
-  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
-
+{#  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.10.2/css/all.css">#}
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 {#  Failed attempt to add favicon: #}
-{#  <link rel="icon" href="{% static 'blog/favicon.ico' %}" type="image/x-icon">#}
+  <link rel="icon" href="{% static 'blog/favicon.ico' %}" type="image/x-icon">
 
   <link rel="stylesheet" type="text/css" href="{% static 'blog/main.css' %}">
 
@@ -30,6 +30,8 @@
   {% else %}
     <title>connor hargus</title>
   {% endif %}
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
 </head>
 <body>
@@ -44,10 +46,10 @@
         <ul class="navbar-nav ml-auto">
           <!-- Navbar Right Side -->
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'blog-home' %}">Blog</a>
+            <a class="nav-link" href="{% url 'blog-home' %}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'blog-calculus' %}">Calculus</a>
+            <a class="nav-link" href="{% url 'blog-calculus' %}">Resources</a>
           </li>
           {% if user.is_authenticated %}
             {%  if user.is_staff %}
@@ -62,9 +64,6 @@
               <a class="nav-link" href="{% url 'logout' %}">Logout</a>
             </li>
           {% else %}
-{#            <li class="nav-item">#}
-{#              <a class="nav-link" href="{% url 'register' %}">Register</a>#}
-{#            </li>#}
             <li class="nav-item">
               <a class="nav-link" href="{% url 'login' %}">Login</a>
             </li>
@@ -119,8 +118,8 @@
 {#  </header>#}
 
   <main role="main" class="container">
-    <div class="row">
-      <div class="col-md-8">
+    <div class="row justify-center">
+      <div class="col-lg-9">
         {% if messages %}
           {% for message in messages %}
             <div class="alert alert-{{ message.tags }}">
@@ -130,13 +129,20 @@
         {% endif %}
         {% block content %}{% endblock %}
       </div>
-      <div class="col"></div>
-      <div class="col-md-4">
-        <div class="content-section about">
-          {%  block sidebar %}{% endblock %}
-          <img class="rounded-circle about-img" src="/media/about_picture.jpg">  {#  {{ user.profile.image.url }}">#}
-          <h5>About</h5>
-          I'm Connor. This is my blog, where I post about stuff I find interesting. If you have any thoughts, questions, or recommendations, feel free to reach out to me at <a href="mailto:connor@hargus.me">connor@hargus.me</a>.
+      <div class="col-lg-3">
+        <div class="row about content-section">
+          <div class="col">
+            <img class="rounded-circle about-img" src="/media/about.png">  {#  {{ user.profile.image.url }}">#}
+          </div>
+          <div class="col about-col">
+            <h5>About</h5>
+            I'm Connor. This is my blog, where I put stuff. If you have any thoughts, questions, or suggestions, feel free to <a href="mailto:connorhargus@gmail.com">email me</a>.
+          </div>
+{#          {% block nosidebar %}#}
+{#            <div class="col-xs-auto about-col">#}
+{#            {%  block sidebar %}{% endblock %}#}
+{#            </div>#}
+{#          {% endblock %}#}
         </div>
       </div>
     </div>
@@ -149,10 +155,10 @@
         <div class="col-lg-8 col-md-10 mx-auto">
           <ul class="list-inline text-center">
             <li class="list-inline-item">
-              <a href="https://www.nytimes.com/2018/11/14/technology/facebook-data-russia-election-racism.html">
+              <a href="/media/files/ConnorHargusResume.pdf">
                 <span class="fa-stack fa-lg">
                   <i class="fas fa-circle fa-stack-2x"></i>
-                  <i class="fab fa-facebook-f fa-stack-1x fa-inverse"></i>
+                  <i class='fas fa-scroll fa-stack-1x fa-inverse'></i>
                 </span>
               </a>
             </li>
@@ -173,7 +179,7 @@
               </a>
             </li>
           </ul>
-          <p class="copyright text-copyright">Copyright &copy; Connor Hargus 2019</p>
+          <p class="copyright text-copyright">Copyright &copy; Connor Hargus 2021</p>
         </div>
       </div>
     </div>

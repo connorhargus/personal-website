@@ -27,7 +27,8 @@ class PostListView(ListView):
     context_object_name = 'posts'  # Default name is different
     ordering = ['-date_posted']
     paginate_by = 5
-    extra_context = {'title': 'blog'}
+    video = "https://www.youtube.com/embed/zcloEzJU27E"
+    extra_context = {'title': 'blog', 'video': video}
 
 
 class UserPostListView(ListView):
@@ -96,5 +97,27 @@ def about(request):
 
 
 def calculus(request):
-    return render(request, 'blog/calculus.html', {'title': 'calculus'})
+    context = {'title': 'resources',
+               'calculus': [('Syllabus', 'Syllabus'),
+                            ('Exam 1', 'Exam_1'),
+                            ('Exam 2', 'Exam_2'),
+                            ('Exam 3', 'Exam_3'),
+                            ('Quiz 1', 'Quiz_1'),
+                            ('Quiz 2', 'Quiz_2'),
+                            ('Quiz 3', 'Quiz_3'),
+                            ('Quiz 4', 'Quiz_4'),
+                            ('Quiz 5', 'Quiz_5')],
+               'precalculus': [('Syllabus', 'Syllabus'),
+                            ('Exam 1', 'Exam_1'),
+                            ('Exam 2', 'Exam_2'),
+                            ('Exam 3', 'Exam_3'),
+                            ('Quiz 1', 'Quiz_1'),
+                            ('Quiz 2', 'Quiz_2'),
+                            ('Quiz 3', 'Quiz_3'),
+                            ('Quiz 4', 'Quiz_4'),
+                            ('Quiz 5', 'Quiz_5'),
+                            ('Quiz 6', 'Quiz_6'),
+                            ('Quiz 7', 'Quiz_7')]}
+
+    return render(request, 'blog/resources.html', context)
 

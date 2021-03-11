@@ -1,41 +1,13 @@
 {%  extends "blog/base.html" %}
 
 {% block content %}
+
   {% for post in posts %}
-    <article class="media content-section">
-{#      <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">#}
-      <div class="media-body">
-        <div class="article-metadata">
-{#          <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>#}
-          <small class="text-muted">{{ post.date_posted|date:"g a, F j, Y" }}</small>
-        </div>
-        <h3><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h3>
-        <p class="article-content">{{ post.content }}</p>
-      </div>
-    </article>
+    {% include "blog/article_section.html" %}
   {% endfor %}
-  <div class="row col-md-offset-6 justify-content-md-center">
-    {% if is_paginated %}
-      {% if page_obj.has_previous %}
-        <a class="btn btn-pg mb-4" href="?page=1">First</a>
-        <a class="btn btn-pg mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
-      {% else %}
-        <a class="btn btn-pg mb-4" href="?page=1">First</a>
-        <a class="btn btn-pg mb-4" href="?page=1">Prev</a>
-      {% endif %}
 
-      {% for num in page_obj.paginator.page_range %}
-        {% if page_obj.number == num %}
-          <a class="btn btn-pg btn-pg-selected mb-4" href="?page={{ num }}">{{ num }}</a>
-        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
-          <a class="btn btn-pg mb-4" href="?page={{ num }}">{{ num }}</a>
-        {% endif %}
-      {% endfor %}
+  {% include "blog/pages_bar.html" %}
 
-      {% if page_obj.has_next %}
-        <a class="btn btn-pg mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
-        <a class="btn btn-pg mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
-      {% endif %}
-    {% endif %}
-  </div>
 {% endblock content%}
+
+{#{% block nosidebar %}{% endblock %}#}
