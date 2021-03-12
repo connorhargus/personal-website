@@ -1,0 +1,102 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{multicol}
+\usepackage{enumitem}
+\usepgfplotslibrary{fillbetween}
+\pgfplotsset{compat=1.16,width=10cm}
+
+
+\setlength{\topmargin}{-.5in} \setlength{\textheight}{9.25in}
+\setlength{\oddsidemargin}{0in} \setlength{\textwidth}{6.8in}
+
+
+\begin{document}
+
+\Large
+
+\noindent{\bf Name: \hfill Date: \hfill Quiz 5 \hfill AP Calculus - Hargus}
+
+\medskip\hrule
+\vspace{10pt}
+
+\noindent \textbf{Instructions:} Please \textbf{show all work} (partial credit will be given for correct work, even if your answer is wrong).
+
+\begin{enumerate}
+
+\item (15 points) Solve the limit.
+
+\begin{enumerate}[itemsep=30pt]
+    \item $\displaystyle \lim_{x \to 5} \frac{1}{x-2} $
+    \item $\displaystyle \lim_{x \to 2} \frac{x^3 - 8}{x^2 - 2} $
+    \item $\displaystyle \lim_{x \to \infty} \frac{\ln(x)}{x} $
+\end{enumerate}
+\vspace{40pt}
+
+\item (10 points) Use separation of variables to solve for the general solution to the differential equation $\displaystyle \frac{dy}{dx} - 5x^4 e^{-y} = 0$.
+
+\vspace{80pt}
+\begin{flushright}
+$y = \rule{3cm}{0.4pt}$
+\end{flushright}
+
+\vspace{20pt}
+
+\item (10 points) Solve the differential equation $\frac{dy}{dx} = 2xy$ for the particular solution with initial condition $y(1) = 1$.
+
+\vspace{80pt}
+\begin{flushright}
+$y = \rule{3cm}{0.4pt}$
+\end{flushright}
+
+\vspace{20pt}
+
+\newpage
+
+\item (20 points) 
+\begin{enumerate}[itemsep=10pt]
+	\item Calculate the midpoint sum $M_{2}$ which approximates the integral $\int_{0}^{4} x^2dx$. 
+\vspace{200pt}
+\begin{flushright}
+$M_2 = \rule{3cm}{0.4pt}$
+\end{flushright}
+\vspace{20pt}
+	\item Is $M_2$ above \textbf{larger} or \textbf{smaller} than $\int_{0}^{4} x^2dx$? (Circle your answer)
+	\item Calculate the trapezoidal sum $T_{2}$ which approximates the integral $\int_{0}^{4} x^2dx$. 
+\vspace{200pt}
+\begin{flushright}
+$T_2 = \rule{3cm}{0.4pt}$
+\end{flushright}
+\vspace{20pt}
+	\item Is $T_2$ above \textbf{larger} or \textbf{smaller} than $\int_{0}^{4} x^2dx$? (Circle your answer)
+\end{enumerate}
+\vspace{20pt}
+
+\newpage
+
+\item (20 points) Draw the slope field for the differential equation $\frac{dy}{dx} = x^2$. Then, draw the solution which has initial condition $y(1) = 2$.
+
+\begin{center}
+\begin{tikzpicture}
+\begin{axis}[ xlabel={$x$}, ylabel={$y$}
+  ,axis lines=middle
+  ,samples=500
+  ,width=15cm,height=15cm
+  , grid
+  , thick
+  ,domain=-4:4
+  ,axis equal
+  ,legend pos=outer north east
+  ,xmin=-4, xmax=4,
+  ,ymin=-4, ymax=4
+  ]
+\addplot+[no marks] {-10};
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+\end{enumerate}
+
+\end{document} 

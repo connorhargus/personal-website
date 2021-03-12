@@ -25,6 +25,9 @@
 
   <link rel="stylesheet" type="text/css" href="{% static 'blog/main.css' %}">
 
+{#  Set background image (couldn't this in CSS while still having static tag)#}
+{#  <div style="background: url('{% static 'img/about.png' %}')"></div>#}
+
   {% if title %}
     <title>connor hargus - {{ title }}</title>
   {% else %}
@@ -132,7 +135,7 @@
       <div class="col-lg-3">
         <div class="row about content-section">
           <div class="col">
-            <img class="rounded-circle about-img" src="/media/about.png">  {#  {{ user.profile.image.url }}">#}
+            <img class="rounded-circle about-img" src="{% static 'img/about.png' %}">  {#  {{ user.profile.image.url }}">#}
           </div>
           <div class="col about-col">
             <h5>About</h5>
@@ -155,7 +158,7 @@
         <div class="col-lg-8 col-md-10 mx-auto">
           <ul class="list-inline text-center">
             <li class="list-inline-item">
-              <a href="/media/files/ConnorHargusResume.pdf">
+              <a href="{% static 'files/ConnorHargusResume.pdf' %}" download>
                 <span class="fa-stack fa-lg">
                   <i class="fas fa-circle fa-stack-2x"></i>
                   <i class='fas fa-scroll fa-stack-1x fa-inverse'></i>

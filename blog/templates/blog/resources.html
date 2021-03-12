@@ -1,4 +1,5 @@
 {%  extends "blog/base.html" %}
+{% load static %}
 
 {% block content %}
   <div class="content-section">
@@ -21,10 +22,11 @@
         {% for file in calculus %}
           <tr>
             <td>{{ file.0 }}</td>
-            <td><a href="/media/files/calculus/{{ file.1 }}.pdf" download>
+            <td><a href="{% static 'files/calculus/'|add:file.1|add:'.pdf' %}" download>
+{#              "{% static '/files/calculus/{{ file.1 }}.pdf' %}" download>#}
               <i class="fas fa-download"></i>
             </a></td>
-            <td><a href="/media/files/calculus/{{ file.1 }}.tex" download>
+            <td><a href="{% static 'files/calculus/'|add:file.1|add:'.tex' %}" download>
               <i class="fas fa-download"></i>
             </a></td>
           </tr>
@@ -47,10 +49,10 @@
         {% for file in precalculus %}
           <tr>
             <td>{{ file.0 }}</td>
-            <td><a href="/media/files/precalculus/{{ file.1 }}.pdf" download>
+            <td><a href="{% static 'files/precalculus/'|add:file.1|add:'.pdf' %}" download>
               <i class="fas fa-download"></i>
             </a></td>
-            <td><a href="/media/files/precalculus/{{ file.1 }}.tex" download>
+            <td><a href="{% static 'files/precalculus/'|add:file.1|add:'.tex' %}" download>
               <i class="fas fa-download"></i>
             </a></td>
           </tr>

@@ -26,12 +26,12 @@ with open(os.path.join(BASE_DIR, 'secret.json')) as config_file:
 SECRET_KEY = config['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = (config["PRODUCTION"] != "True")
+DEBUG = (config["DEBUG"] == "TRUE")
 
 if DEBUG:
     ALLOWED_HOSTS = ['127.0.0.1', '45.79.20.42']
 else:
-    ALLOWED_HOSTS = ['connorharg.us', 'connorhargus.com', 'www.connorharg.us', 'www.connorhargus.com', '45.79.20.42']
+    ALLOWED_HOSTS = ['127.0.0.1', 'connorharg.us', 'connorhargus.com', 'www.connorharg.us', 'www.connorhargus.com', '45.79.20.42']
 
 # Application definition, also allowing for crispy forms add on package
 
@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'storages'
 ]
 
 MIDDLEWARE = [
@@ -107,7 +108,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
@@ -122,19 +122,6 @@ USE_L10N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/2.2/howto/static-files/
-
-#TODO Add this back?
-# if not DEBUG:
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATIC_URL = '/static/'
-
-# Where to store uploaded files
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-# Public URL for the above directory to access files
-MEDIA_URL = '/media/'
 
 # Makes crispy-forms package use bootstrap4
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
@@ -151,3 +138,45 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = config['EMAIL_USER']
 EMAIL_HOST_PASSWORD = config['EMAIL_PASS']
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/2.2/howto/static-files/
+
+# #TODO Add this back?
+# # if not DEBUG:
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+# STATIC_URL = '/static/'
+#
+# # Where to store uploaded files
+# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+#
+# # Public URL for the above directory to access files
+# MEDIA_URL = '/media/'
+#
+# # Stuff required by django-storages to work with S3:
+# AWS_ACCESS_KEY_ID = config['AWS_ACCESS_KEY_ID']
+# AWS_SECRET_ACCESS_KEY = config['AWS_SECRET_ACCESS_KEY']
+# AWS_STORAGE_BUCKET_NAME = config['AWS_STORAGE_BUCKET_NAME']
+#
+# AWS_S3_FILE_OVERWRITE = False
+# AWS_DEFAULT_ACL = None
+#
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+
+AWS_ACCESS_KEY_ID = config['AWS_ACCESS_KEY_ID']
+AWS_SECRET_ACCESS_KEY = config['AWS_SECRET_ACCESS_KEY']
+AWS_STORAGE_BUCKET_NAME = config['AWS_STORAGE_BUCKET_NAME']
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
+AWS_DEFAULT_ACL = 'public-read'
+
+AWS_LOCATION = 'static'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
+STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+DEFAULT_FILE_STORAGE = 'personal_website.storages.MediaStore'
+MEDIA_URL = '/'

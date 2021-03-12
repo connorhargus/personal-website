@@ -1,0 +1,91 @@
+\documentclass[11pt]{article}
+
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{multicol}
+
+
+\setlength{\topmargin}{-.5in} \setlength{\textheight}{9.25in}
+\setlength{\oddsidemargin}{0in} \setlength{\textwidth}{6.8in}
+
+
+\begin{document}
+
+\Large
+
+
+\noindent{\bf Name: \hfill Date: \hfill Quiz 2 \hfill AP Calculus - Hargus}
+
+\medskip\hrule
+\vspace{10pt}
+
+\begin{enumerate}
+
+\item Evaluate the limit (show work for (d), (e), and (f)):
+\begin{multicols}{2}
+\begin{enumerate}
+    \item{$\displaystyle{\lim_{x \to 5} -1}$} \\
+    \item $\displaystyle{\lim_{x \to 5} x}$ \\
+    \item $\displaystyle{\lim_{x \to 0} \frac{\sin{x}}{x}}$ \\
+    \item $\displaystyle{\lim_{x \to -2} \frac{x^2 + 3x + 2}{x + 2}}$ \\
+    \item $\displaystyle{\lim_{t \to 0} \frac{4^{2t} - 1}{4^t - 1}}$ \\
+    \item $\displaystyle{\lim_{x \to \infty} \frac{5x^2 - 3x}{1 + 7x^2}}$ \\
+\end{enumerate}
+\end{multicols}
+
+\item If for $f(x)$ we know $\lim_{x \to \infty} f(x) = 2$, what kind of asymptote do we have (circle: \textbf{horizontal} or \textbf{vertical}) and what is the equation for that asymptote's line?
+
+\begin{flushright}\noindent\rule{4cm}{0.4pt}\end{flushright}
+
+\item True or false?
+\begin{enumerate}
+    \item \rule{1cm}{0.4pt} If $f(x)$ has a horizontal asymptote at $y=3$, then there is \textbf{no} value $c$ for which $f(c)=3$.
+    \item \rule{1cm}{0.4pt} If for some continuous function $f(x)$ we have $f(2)=4$ and $f(4)=8$, then there must be some value $c$ for which $f(c)=1$.
+\end{enumerate} 
+
+\item In the graph below, we can see that $f(x) \leq g(x) \leq h(x)$. If we know that $\lim_{x \to c}f(x) = \lim_{x \to c}h(x) = L$, what can we conclude from the Squeeze Theorem about $g(x)$?
+
+\begin{flushright}
+    \rule{8cm}{0.4pt}
+\end{flushright}
+
+\begin{center}
+\tikzset{every picture/.style={line width=0.75pt}} %set default line width to 0.75pt        
+
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1]
+%uncomment if require: \path (0,300); %set diagram left start at 0, and has height of 300
+
+%Curve Lines [id:da8807327968677967] 
+\draw    (176,146) .. controls (190.79,134.91) and (261.5,189) .. (275.5,145) .. controls (289.5,101) and (423.29,165.91) .. (448.5,147) ;
+%Straight Lines [id:da035593078523438626] 
+\draw    (198.5,37) -- (198.5,265) ;
+%Straight Lines [id:da9031119746714221] 
+\draw    (432.5,249) -- (184,249) ;
+%Curve Lines [id:da07509652388036381] 
+\draw    (186,226) .. controls (196.63,218.03) and (268.76,206.97) .. (294.5,185) .. controls (320.24,163.03) and (301.52,128.94) .. (333.5,133) .. controls (365.48,137.06) and (439.3,177.06) .. (448.5,195) ;
+%Curve Lines [id:da10241220594478895] 
+\draw    (178,84) .. controls (191.79,73.66) and (231.12,41.28) .. (268.5,49) .. controls (305.88,56.72) and (306.63,118.31) .. (331.5,130) .. controls (356.37,141.69) and (432.32,122.89) .. (449.5,110) ;
+%Straight Lines [id:da14158591334022474] 
+\draw  [dash pattern={on 4.5pt off 4.5pt}]  (337.5,133) -- (337.5,248) ;
+%Straight Lines [id:da4509750751074372] 
+\draw  [dash pattern={on 4.5pt off 4.5pt}]  (337.5,132) -- (198.5,132) ;
+
+% Text Node
+\draw (183,123.4) node [anchor=north west][inner sep=0.75pt]    {$L$};
+% Text Node
+\draw (333,251.4) node [anchor=north west][inner sep=0.75pt]    {$c$};
+% Text Node
+\draw (453,98.4) node [anchor=north west][inner sep=0.75pt]    {$h( x)$};
+% Text Node
+\draw (451,136.4) node [anchor=north west][inner sep=0.75pt]    {$g( x)$};
+% Text Node
+\draw (450,186.4) node [anchor=north west][inner sep=0.75pt]    {$f( x)$};
+
+
+\end{tikzpicture}
+\end{center}
+
+\end{enumerate}
+
+\end{document} 
