@@ -48,13 +48,8 @@ urlpatterns = [
 ]
 
 
-# if settings.DEBUG:
-#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+if settings.DEBUG:  # Dev only, used to simulate production
 
-
-if settings.DEBUG:  # Dev only
-
-    print("MEDIA_URL:", settings.MEDIA_URL)
     urlpatterns += static(settings.STATIC_URL,
                           document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL,
