@@ -16,17 +16,15 @@ import json
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-with open(os.path.join(BASE_DIR, 'secret.json')) as config_file:
-    config = json.load(config_file)
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config['SECRET_KEY']
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = (config["DEBUG"] == "TRUE")
+DEBUG = (os.environ.get("DEBUG") == "TRUE")
+print("DEBUG:", DEBUG)
 
 if DEBUG:
     ALLOWED_HOSTS = ['127.0.0.1', '45.79.20.42']
@@ -121,8 +119,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
-
 # Makes crispy-forms package use bootstrap4
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
@@ -136,40 +132,62 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = config['EMAIL_USER']
-EMAIL_HOST_PASSWORD = config['EMAIL_PASS']
+EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
 
-USE_S3 = (config['USE_S3'] == "TRUE")
+# Where we store static files (from collectstatic)
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# Public URL for the above directory to access static files
+STATIC_URL = '/static/'
 
-# If not using S3, load all static and media files from local folder
-if not USE_S3:
+# Where we store uploaded files
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# Public URL for the above directory to access files
+MEDIA_URL = '/media/'
 
-    # Where we store static files
-    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-    # Public URL for the above directory to access static files
-    STATIC_URL = '/static/'
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
 
-    # Where we store uploaded files
-    MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-    # Public URL for the above directory to access files
-    MEDIA_URL = '/media/'
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
 
-# If using S3, load all static and media files from S3 using django-storages
-# (See tutorial at https://www.youtube.com/watch?v=ahBG_iLbJPM)
-else:
-    AWS_ACCESS_KEY_ID = config['AWS_ACCESS_KEY_ID']
-    AWS_SECRET_ACCESS_KEY = config['AWS_SECRET_ACCESS_KEY']
-    AWS_STORAGE_BUCKET_NAME = config['AWS_STORAGE_BUCKET_NAME']
-    AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-    AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
-    AWS_DEFAULT_ACL = 'public-read'
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-    AWS_LOCATION = 'static'
-    STATICFILES_DIRS = [
-        os.path.join(BASE_DIR, 'static'),
-    ]
 
-    STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
-    STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-    DEFAULT_FILE_STORAGE = 'personal_website.storages.MediaStore'  # This works because of personal_website/storages.py
-    MEDIA_URL = '/'
+
+# Old code getting static and media files from AWS. Now only get media files from AWS, have heroku host static files.
+# USE_S3 = (config['USE_S3'] == "TRUE")
+#
+# # If not using S3, load all static and media files from local folder
+# if not USE_S3:
+#
+#     # Where we store static files
+#     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+#     # Public URL for the above directory to access static files
+#     STATIC_URL = '/static/'
+#
+#     # Where we store uploaded files
+#     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+#     # Public URL for the above directory to access files
+#     MEDIA_URL = '/media/'
+#
+# # If using S3, load all static and media files from S3 using django-storages
+# # (See tutorial at https://www.youtube.com/watch?v=ahBG_iLbJPM)
+# else:
+#     AWS_ACCESS_KEY_ID = config['AWS_ACCESS_KEY_ID']
+#     AWS_SECRET_ACCESS_KEY = config['AWS_SECRET_ACCESS_KEY']
+#     AWS_STORAGE_BUCKET_NAME = config['AWS_STORAGE_BUCKET_NAME']
+#     AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+#     AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
+#     AWS_DEFAULT_ACL = 'public-read'
+#
+#     AWS_LOCATION = 'static'
+#     STATICFILES_DIRS = [
+#         os.path.join(BASE_DIR, 'static'),
+#     ]
+#
+#     STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
+#     STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+#     DEFAULT_FILE_STORAGE = 'personal_website.storages.MediaStore'  # This works because of personal_website/storages.py
+#     MEDIA_URL = '/'

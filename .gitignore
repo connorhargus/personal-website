@@ -6,4 +6,5 @@
 media/
 .idea/
 /static/
+/staticfiles/
 venv/
