@@ -2,7 +2,6 @@
 *.sqlite3
 *.pyc
 *.json
-*.ico
 
 media/
 .idea/
