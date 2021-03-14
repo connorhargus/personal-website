@@ -114,7 +114,8 @@ iframe {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 80%;
+  height: 500px;
+  width: 100%;
 }
 
 /* Moves navigation items to rights side while collapsed */
