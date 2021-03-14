@@ -129,6 +129,7 @@ LOGIN_REDIRECT_URL = 'blog-home'
 # Change where trying to access private content without logging in redirects
 LOGIN_URL = 'login'
 
+# Set up emailing in order to send reset password emails
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
@@ -136,7 +137,7 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
 
-# Where we store static files (from collectstatic)
+# Where we store static files (during python manage.py collectstatic). Needs to be staticfiles directory for Heroku.
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 # Public URL for the above directory to access static files
 STATIC_URL = '/static/'
@@ -146,6 +147,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Public URL for the above directory to access files
 MEDIA_URL = '/media/'
 
+# This stuff is needed to use AWS for media (user-uploaded) files
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
@@ -155,41 +157,5 @@ AWS_DEFAULT_ACL = None
 
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
+# This is needed to get django-heroku package to work, which helps us deploy django project on Heroku
 django_heroku.settings(locals())
-
-
-# Old code getting static and media files from AWS. Now only get media files from AWS, have heroku host static files.
-# USE_S3 = (config['USE_S3'] == "TRUE")
-#
-# # If not using S3, load all static and media files from local folder
-# if not USE_S3:
-#
-#     # Where we store static files
-#     STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-#     # Public URL for the above directory to access static files
-#     STATIC_URL = '/static/'
-#
-#     # Where we store uploaded files
-#     MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-#     # Public URL for the above directory to access files
-#     MEDIA_URL = '/media/'
-#
-# # If using S3, load all static and media files from S3 using django-storages
-# # (See tutorial at https://www.youtube.com/watch?v=ahBG_iLbJPM)
-# else:
-#     AWS_ACCESS_KEY_ID = config['AWS_ACCESS_KEY_ID']
-#     AWS_SECRET_ACCESS_KEY = config['AWS_SECRET_ACCESS_KEY']
-#     AWS_STORAGE_BUCKET_NAME = config['AWS_STORAGE_BUCKET_NAME']
-#     AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
-#     AWS_S3_OBJECT_PARAMETERS = {'CacheControl': 'max-age=86400'}
-#     AWS_DEFAULT_ACL = 'public-read'
-#
-#     AWS_LOCATION = 'static'
-#     STATICFILES_DIRS = [
-#         os.path.join(BASE_DIR, 'static'),
-#     ]
-#
-#     STATIC_URL = 'https://%s/%s/' % (AWS_S3_CUSTOM_DOMAIN, AWS_LOCATION)
-#     STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-#     DEFAULT_FILE_STORAGE = 'personal_website.storages.MediaStore'  # This works because of personal_website/storages.py
-#     MEDIA_URL = '/'

@@ -6,20 +6,34 @@
 
 
 body {
-  background-color: #bdbfba;
-  background-image: url("../img/bg.jpeg");
-  background-size: 2200px;
-  background-attachment: fixed;
-  background-position: 50% 80%;
+  /*background-color: #bdbfba;*/
+  /*background-image: url("../img/bg.jpeg");*/
+  /*background-size: 2200px;*/
+  /*background-attachment: fixed;*/
+  /*background-position: 50% 80%;*/
   font-size: 19px;
   color: #4D545B;
   font-family: Crimson Text, serif;
 }
 
-@viewport {
-  zoom: 1.0;
-  min-zoom: 1.0;
-  max-zoom: 2.0;
+/* See https://stackoverflow.com/questions/26372127/background-fixed-no-repeat-not-working-on-mobile*/
+body:before {
+  font-size: 19px;
+  color: #4D545B;
+  font-family: Crimson Text, serif;
+  content: "";
+  display: block;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -10;
+  background: url("../img/bg.jpeg") no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 p {
@@ -103,24 +117,32 @@ iframe {
   width: 80%;
 }
 
-/* Navbar when collapsed. */
+/* Moves navigation items to rights side while collapsed */
+.nav-item{
+    text-align: right;
+    padding-left: 30px
+}
+
+/* General settings for navbar */
 #mainNav {
   position: relative;
-  margin-bottom: 10px;
-  background-color: rgba(180, 180, 180, 0.5);
-  border-color: rgba(200, 200, 200, 0.8);
+  margin-bottom: 30px;
+  background-color: rgba(0, 0, 0, 0.25);
+  border-color: rgba(255, 255, 255, 1);
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+/* Controls title text */
 #mainNav .navbar-brand {
   font-weight: 800;
   font-size: 30px;
   color: white;
 }
 
+/* Controls toggle button on small screens */
 #mainNav .navbar-toggler {
-  background-color: rgba(200, 200, 200, 0.3);
-  font-size: 12px;
+  background-color: rgba(255, 255, 255, 0.15);
+  font-size: 17px;
   font-weight: 800;
   padding: 13px;
   text-transform: uppercase;
@@ -128,34 +150,40 @@ iframe {
   color: white;
 }
 
+/* Controls individual navigation items on rights side */
 #mainNav .navbar-nav > li.nav-item > a {
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 1px;
   text-transform: uppercase;
-  color: white;
+  color: #ffffff;
 }
 
-@media only screen and (min-width: 992px) {
-  #mainNav {
-    border-bottom: 1px solid transparent;
-    background: transparent;
-  }
-  #mainNav .navbar-brand {
-    padding: 10px 20px;
-    color: white;
-  }
-  #mainNav .navbar-brand:focus, #mainNav .navbar-brand:hover {
-    color: rgba(255, 255, 255, 0.4);
-  }
-  #mainNav .navbar-nav > li.nav-item > a {
-    padding: 10px 20px;
-    color: #fff;
-  }
-  #mainNav .navbar-nav > li.nav-item > a:focus, #mainNav .navbar-nav > li.nav-item > a:hover {
-    color: rgba(255, 255, 255, 0.4);
-  }
+/* Makes collapsed navigation items turn transparent when hovered over or clicked */
+#mainNav .navbar-nav > li.nav-item > a:focus, #mainNav .navbar-nav > li.nav-item > a:hover {
+  color: rgba(255, 255, 255, 0.3);
 }
+
+/*@media only screen and (min-width: 992px) {*/
+/*  #mainNav {*/
+/*    border-bottom: 1px solid transparent;*/
+/*    background: transparent;*/
+/*  }*/
+/*  #mainNav .navbar-brand {*/
+/*    padding: 10px 20px;*/
+/*    color: white;*/
+/*  }*/
+/*  #mainNav .navbar-brand:focus, #mainNav .navbar-brand:hover {*/
+/*    color: rgba(255, 255, 255, 0.6);*/
+/*  }*/
+/*  #mainNav .navbar-nav > li.nav-item > a {*/
+/*    padding: 10px 20px;*/
+/*    color: #fff;*/
+/*  }*/
+/*  #mainNav .navbar-nav > li.nav-item > a:focus, #mainNav .navbar-nav > li.nav-item > a:hover {*/
+/*    color: rgba(255, 255, 255, 0.6);*/
+/*  }*/
+/*}*/
 
 @media only screen and (min-width: 992px) {
   #mainNav {
@@ -236,6 +264,8 @@ iframe {
 
 .about-col {
   padding: 5px 15px 5px 20px;
+  /*Need this min-width to prevent text from getting really skinny on phone screens*/
+  min-width: 180px;
 }
 
 .navigate {

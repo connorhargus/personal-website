@@ -42,12 +42,12 @@
     <div class="container">
       <a class="navbar-brand" href="{% url 'blog-home' %}">connor hargus</a>
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        Menu
         <i class="fas fa-bars"></i>
       </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <!-- Navbar Right Side -->
+{#      <div class="collapse navbar-collapse" id="navbarResponsive">#}
+{#        <ul class="navbar-nav justify-content-end">#}
+      <div class="collapse navbar-collapse justify-content-end" id="navbarResponsive">
+        <ul class="navbar-nav">          <!-- Navbar Right Side -->
           <li class="nav-item">
             <a class="nav-link" href="{% url 'blog-home' %}">Home</a>
           </li>
@@ -71,7 +71,6 @@
               <a class="nav-link" href="{% url 'login' %}">Login</a>
             </li>
           {% endif %}
-
         </ul>
       </div>
     </div>
@@ -139,7 +138,7 @@
           </div>
           <div class="col about-col">
             <h5>About</h5>
-            I'm Connor. This is my blog, where I put stuff. If you have any thoughts, questions, or suggestions, feel free to <a href="mailto:connorhargus@gmail.com">email me</a>.
+            I'm Connor. This is a blog where I put stuff. If you have any thoughts, questions, or suggestions, feel free to <a href="mailto:connorhargus@gmail.com">email me</a>.
           </div>
 {#          {% block nosidebar %}#}
 {#            <div class="col-xs-auto about-col">#}
