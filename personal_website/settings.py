@@ -28,12 +28,17 @@ DEBUG = (os.environ.get("DEBUG") == "TRUE")
 print("DEBUG:", DEBUG)
 
 if DEBUG:
-    ALLOWED_HOSTS = ['connorhargus.herokuapp.com', '127.0.0.1', '45.79.20.42']
+    ALLOWED_HOSTS = ['127.0.0.1']
 else:
-    ALLOWED_HOSTS = ['connorhargus.herokuapp.com', '127.0.0.1', 'connorharg.us', 'connorhargus.com', 'www.connorharg.us', 'www.connorhargus.com', '45.79.20.42']
+    ALLOWED_HOSTS = ['connorhargus.com', 'www.connorhargus.com']
+
+    # Force https when in production
+    # (see: https://help.heroku.com/J2R1S4T8/can-heroku-force-an-application-to-use-ssl-tls)
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    SECURE_SSL_REDIRECT = True
+
 
 # Application definition, also allowing for crispy forms add on package
-
 INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'users.apps.UsersConfig',

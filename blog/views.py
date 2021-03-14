@@ -27,8 +27,7 @@ class PostListView(ListView):
     context_object_name = 'posts'  # Default name is different
     ordering = ['-date_posted']
     paginate_by = 5
-    video = "https://www.youtube.com/embed/zcloEzJU27E"
-    extra_context = {'title': 'blog', 'video': video}
+    extra_context = {'title': 'blog'}
 
 
 class UserPostListView(ListView):
@@ -90,10 +89,6 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         if self.request.user == post.author:
             return True
         return False
-
-
-def about(request):
-    return render(request, 'blog/about.html', {'title': 'about'})
 
 
 def calculus(request):
