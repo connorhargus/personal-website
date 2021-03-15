@@ -7,10 +7,6 @@
 
 body {
   /*background-color: #bdbfba;*/
-  /*background-image: url("../img/bg.jpeg");*/
-  /*background-size: 2200px;*/
-  /*background-attachment: fixed;*/
-  /*background-position: 50% 80%;*/
   font-size: 19px;
   color: #4D545B;
   font-family: Crimson Text, serif;
@@ -18,9 +14,6 @@ body {
 
 /* See https://stackoverflow.com/questions/26372127/background-fixed-no-repeat-not-working-on-mobile*/
 body:before {
-  font-size: 19px;
-  color: #4D545B;
-  font-family: Crimson Text, serif;
   content: "";
   display: block;
   position: fixed;
@@ -64,7 +57,7 @@ h4,
 h5,
 h6 {
   font-weight: 800;
-  font-family: 'Helvetica Neue',  sans-serif;
+  font-family: 'Cabin',  sans-serif;
 }
 
 a {
@@ -131,12 +124,13 @@ iframe {
   margin-bottom: 30px;
   background-color: rgba(0, 0, 0, 0.25);
   border-color: rgba(255, 255, 255, 1);
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  /*font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;*/
+  font-family: 'Cabin', sans-serif;
 }
 
 /* Controls title text */
 #mainNav .navbar-brand {
-  font-weight: 800;
+  font-weight: 1000;
   font-size: 30px;
   color: white;
 }
@@ -147,7 +141,6 @@ iframe {
   font-size: 17px;
   font-weight: 800;
   padding: 13px;
-  text-transform: uppercase;
   border-color: white;
   color: white;
 }
@@ -155,7 +148,7 @@ iframe {
 /* Controls individual navigation items on rights side */
 #mainNav .navbar-nav > li.nav-item > a {
   font-size: 12px;
-  font-weight: 800;
+  font-weight: 600;
   letter-spacing: 1px;
   text-transform: uppercase;
   color: #ffffff;

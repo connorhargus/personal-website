@@ -91,8 +91,8 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         return False
 
 
-def calculus(request):
-    context = {'title': 'resources',
+def teaching(request):
+    context = {'title': 'teaching',
                'calculus': [('Syllabus', 'Syllabus'),
                             ('Exam 1', 'Exam_1'),
                             ('Exam 2', 'Exam_2'),
@@ -114,5 +114,5 @@ def calculus(request):
                             ('Quiz 6', 'Quiz_6'),
                             ('Quiz 7', 'Quiz_7')]}
 
-    return render(request, 'blog/resources.html', context)
+    return render(request, 'blog/teaching.html', context)
 

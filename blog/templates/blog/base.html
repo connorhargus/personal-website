@@ -19,6 +19,12 @@
   <link rel="stylesheet" href="https://use.typekit.net/gkj2jlf.css">
   <link href="https://fonts.googleapis.com/css?family=Crimson+Text&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Alegreya&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Taviraj&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Oxygen:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cabin:wght@700&display=swap" rel="stylesheet">
+
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville&family=Rubik&display=swap" rel="stylesheet">
 
   <!-- Font Awesome for footer icons -->
 {#  <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.10.2/css/all.css">#}
@@ -32,9 +38,9 @@
 {#  <div style="background: url('{% static 'img/about.png' %}')"></div>#}
 
   {% if title %}
-    <title>connor hargus - {{ title }}</title>
+    <title>connorhargus - {{ title }}</title>
   {% else %}
-    <title>connor hargus</title>
+    <title>connorhargus</title>
   {% endif %}
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -57,31 +63,29 @@
       <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <i class="fas fa-bars"></i>
       </button>
-{#      <div class="collapse navbar-collapse" id="navbarResponsive">#}
-{#        <ul class="navbar-nav justify-content-end">#}
       <div class="collapse navbar-collapse justify-content-end" id="navbarResponsive">
         <ul class="navbar-nav">          <!-- Navbar Right Side -->
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'blog-home' %}">Home</a>
+            <a class="nav-link" href="{% url 'blog-home' %}">home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'blog-calculus' %}">Resources</a>
+            <a class="nav-link" href="{% url 'blog-teaching' %}">teaching</a>
           </li>
           {% if user.is_authenticated %}
             {%  if user.is_staff %}
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'post-create' %}">Create Post</a>
+                <a class="nav-link" href="{% url 'post-create' %}">create post</a>
               </li>
             {% endif %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+              <a class="nav-link" href="{% url 'profile' %}">profile</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+              <a class="nav-link" href="{% url 'logout' %}">logout</a>
             </li>
           {% else %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'login' %}">Login</a>
+              <a class="nav-link" href="{% url 'login' %}">login</a>
             </li>
           {% endif %}
         </ul>

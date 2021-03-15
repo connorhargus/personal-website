@@ -4,7 +4,7 @@
     <div class="article-metadata">
 {#      <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>#}
       <small class="text-muted">{{ post.date_posted|date:"F j, Y" }}</small>
-      <h3><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h3>
+      <h4><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h4>
 
       {# I think this works and only shows up for PostDetailView is because object in the PostListView #}
       {# does not have attribute author (because it is a list of posts) #}

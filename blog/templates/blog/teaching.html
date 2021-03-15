@@ -1,0 +1,88 @@
+{%  extends "blog/base.html" %}
+{% load static %}
+
+{% block content %}
+  <div class="content-section">
+    <small class="text-muted">Fall 2019 - Spring 2020</small>
+    <h3>Teaching Resources</h3>
+    <p><h4><b>What is this?</b></h4>
+      I once taught AP Calculus AB and Precalculus. In the process, I made a bunch of resources which I
+        am sharing below in the hopes they may help other first-time math teachers.
+    The PDF files are available for download below.
+    The PDFs and all plots and figures therein are generated using TeX files which are also available below.
+      Feel free to take them and adapt them to your needs without attribution.
+
+    <p><b>Example (AP Calculus Quiz 3):</b>
+    <div style="text-align:center">
+      <object data="{% static 'files/calculus/Quiz_3.pdf' %}" type="application/pdf" width="90%" height="300px">
+        <embed src="{% static 'files/calculus/Quiz_3.pdf' %}" type="application/pdf" />
+      </object>
+    </div>
+    <p><h4><b>AP Calculus</b></h4>
+
+    <b>Primary references for HW and lessons:</b>
+    <ul>
+      <li> Jon Rogawski, <em>Calculus for AP: Early Transcendentals</em>, 2nd Ed., 2012.
+      <li> Steven Strogatz, <em>Infinite Powers: How Calculus Reveals the Secrets of the Universe</em>, 2019.
+    </ul>
+    <table class="table" style="width:100%; text-align:center">
+      <tr>
+        <th>Resource</th>
+        <th>PDF</th>
+        <th>TeX</th>
+      </tr>
+      {% for file in calculus %}
+        <tr>
+          <td>{{ file.0 }}</td>
+          <td><a href="{% static 'files/calculus/'|add:file.1|add:'.pdf' %}" download>
+{#              "{% static '/files/calculus/{{ file.1 }}.pdf' %}" download>#}
+            <i class="fas fa-download"></i>
+          </a></td>
+          <td><a href="{% static 'files/calculus/'|add:file.1|add:'.tex' %}" download>
+            <i class="fas fa-download"></i>
+          </a></td>
+        </tr>
+      {% endfor %}
+    </table>
+
+
+
+    <p><h4><b>Precalculus</b></h4>
+    <b>Primary reference for HW and lessons:</b>
+    <ul>
+      <li> Franklin Demana, <em>Precalculus: Graphical, Numerical, Algebraic</em>, 8th Ed., 2011.
+    </ul>
+    <table class="table" style="width:100%; text-align:center">
+      <tr>
+        <th>Resource</th>
+        <th>PDF</th>
+        <th>TeX</th>
+      </tr>
+      {% for file in precalculus %}
+        <tr>
+          <td>{{ file.0 }}</td>
+          <td><a href="{% static 'files/precalculus/'|add:file.1|add:'.pdf' %}" download>
+            <i class="fas fa-download"></i>
+          </a></td>
+          <td><a href="{% static 'files/precalculus/'|add:file.1|add:'.tex' %}" download>
+            <i class="fas fa-download"></i>
+          </a></td>
+        </tr>
+      {% endfor %}
+    </table>
+
+    <p> <em>If you found these resources helpful and have the means, you might consider buying me a coffee:</em> </p>
+    <div style="text-align:center">
+      <script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="connorhargus" data-color="#FFDD00" data-emoji=""  data-font="Bree" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>
+    </div><p>
+  </div>
+{% endblock content %}
+
+{#{% block nosidebar %}{% endblock %}#}
+
+{#{% block sidebar %}#}
+{#  <h5>Announcements</h5>#}
+{#  <ul>#}
+{#    <li> Please sign up for <a href="urlpiazza.com/guilin_high_school/fall2019/calculus">Piazza</a> using the course passcode "calculus". There you will be able to ask me any questions you may have about the class and the material.#}
+{#  </ul>#}
+{#{% endblock sidebar %}#}
