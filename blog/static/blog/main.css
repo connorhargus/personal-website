@@ -110,6 +110,7 @@ img::-moz-selection {
   background: transparent;
 }
 
+/* Centers embedded iframes from Youtube */
 iframe {
   display: block;
   margin-left: auto;
